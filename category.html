@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกหมวดหมู่</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #d1b07833;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 50px;
+            width: 80%;
+            max-width: 800px;
+            height: 600px;
+        }
+        .grid div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #333;
+            text-align: center;
+            font-size: 25px;
+            position: relative;
+            padding: 25px;
+            font-style: initial;
+        }
+        .grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }
+        .grid button {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div>
+            <img src="/project/img/img1.jpg" alt="ดอย,อุทยาน">
+            <span>ดอย , อุทยาน</span>
+            <button onclick="goToPage('/project/doi/doi.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div>
+            <img src="/project/img/img22.jpg" alt="สวนสาธารณะ">
+            <span>สวนสาธารณะ</span>
+            <button onclick="goToPage('/project/park/park.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div>
+            <img src="/project/img/img33.jpg" alt="วัด">
+            <span>วัด</span>
+            <button onclick="goToPage('/project/temple/temple.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div>
+            <img src="/project/img/img44.jpg" alt="ร้านอาหาร , คาเฟ่">
+            <span>ร้านอาหาร , คาเฟ่</span>
+            <button onclick="goToPage('/project/cafe/cafe.html')">ดูเพิ่มเติม</button>
+        </div>
+    </div>
+    
+    <script>
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

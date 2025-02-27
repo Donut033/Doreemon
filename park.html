@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แกลเลอรี่สถานที่</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #afc4b860;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+        .card {
+            position: relative;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card button {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            background-color: rgb(106, 48, 48);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: rgb(106, 48, 48);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-btn" href="/project/category.html">ย้อนกลับ</a>
+    <div class="container">
+        <div class="card">
+            <img src="/project/img/img2.1.jpg" alt="สิงห์ปาร์ค">
+            <p>สิงห์ปาร์ค (ไร่บุญรอด)</p>
+            <br>
+            <button onclick="nextPage('/project/park/sing.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div class="card">
+            <img src="/project/img/img2.2.jpg" alt="สวนตุงและโคม">
+            <p>สวนตุงและโคมเฉลิมพระเกียรติ 75 พรรษา</p>
+            <br>
+            <button onclick="nextPage('/project/park/flowers.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div class="card">
+            <img src="/project/img/img2.3.jpg" alt="เกาะลอย">
+            <p>สวนสาธารณะเกาะลอย</p>
+            <br>
+            <button onclick="nextPage('/project/park/kohloy.html')">ดูเพิ่มเติม</button>
+        </div>
+        <div class="card">
+            <img src="/project/img/img2.4.jpg" alt="สวนราชพัด">
+            <p>สวนสมเด็จพระศรีนครินทร์</p>
+            <br>
+            <button onclick="nextPage('/project/park/crru.html')">ดูเพิ่มเติม</button>
+        </div>
+        
+    <script>
+        function nextPage(url) {
+            window.location.href = url;
+        }
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

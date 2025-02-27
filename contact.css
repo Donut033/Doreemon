@@ -1,0 +1,58 @@
+/* รีเซ็ตค่าเริ่มต้น */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(img/z1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* คอนเทนเนอร์ไอคอน */
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* สไตล์ไอคอน */
+.icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    color: var(--color);
+    text-decoration: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px var(--color);
+    transition: 0.3s;
+}
+
+/* เพิ่มเงาสะท้อน */
+.icon::after {
+    content: attr(data-text);
+    position: absolute;
+    bottom: -50px;
+    font-size: 40px;
+    color: var(--color);
+    opacity: 0.2;
+    transform: scaleY(-1);
+}
+
+/* เอฟเฟกต์ Hover */
+.icon:hover {
+    background: var(--color);
+    color: #fff;
+    box-shadow: 0 0 20px var(--color), 0 0 40px var(--color);
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสอบถาม</title>
+    <style>
+        /* รีเซ็ตค่าเริ่มต้น */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ตั้งค่าพื้นหลัง */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://source.unsplash.com/1600x900/?nature,landscape') no-repeat center center/cover;
+        }
+
+        /* เอฟเฟกต์พื้นหลังเบลอ */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ปุ่มย้อนกลับ */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(198, 194, 194, 0.3);
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background: rgba(175, 2, 2, 0.3);
+        }
+
+        /* กล่องแบบสอบถาม */
+        .survey-box {
+            position: relative;
+            background: rgba(81, 187, 191, 0.83);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            color: rgb(0, 0, 0);
+        }
+
+        /* สไตล์ช่องกรอกข้อมูล */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, 
+        .input-group select, 
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* ปุ่มส่ง */
+        .btn {
+            background: rgba(255, 255, 255, 0.3);
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ส่วนแสดงผลหลังจากส่งข้อมูล */
+        .result-box {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div> <!-- พื้นหลัง -->
+
+    <!-- ปุ่มย้อนกลับ -->
+    <button class="back-button" onclick="goBack()">⬅ ย้อนกลับ</button>
+
+    <div class="survey-box">
+        <h2>แบบสอบถามความคิดเห็น</h2>
+        <form id="surveyForm">
+            
+            <div class="input-group">
+                <label>ชื่อ-นามสกุล</label>
+                <input type="text" id="fullname" required>
+            </div>
+            
+            <div class="input-group">
+                <label>อีเมล</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group">
+                <label>คุณพึงพอใจบริการของเราหรือไม่?</label>
+                <select id="satisfaction">
+                    <option value="ดีมาก">ดีมาก</option>
+                    <option value="ดี">ดี</option>
+                    <option value="พอใช้">พอใช้</option>
+                    <option value="ต้องปรับปรุง">ต้องปรับปรุง</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>ข้อเสนอแนะเพิ่มเติม</label>
+                <textarea id="feedback" rows="4"></textarea>
+            </div>
+
+            <button type="button" class="btn" onclick="submitForm()">ส่งแบบสอบถาม</button>
+        </form>
+
+        <!-- กล่องแสดงผล -->
+        <div id="resultBox" class="result-box">
+            <h3>ข้อมูลที่คุณกรอก:</h3>
+            <p><strong>ชื่อ:</strong> <span id="resultName"></span></p>
+            <p><strong>อีเมล:</strong> <span id="resultEmail"></span></p>
+            <p><strong>ระดับความพึงพอใจ:</strong> <span id="resultSatisfaction"></span></p>
+            <p><strong>ข้อเสนอแนะ:</strong> <span id="resultFeedback"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันย้อนกลับ
+        function goBack() {
+            window.history.back(); // กลับไปหน้าก่อนหน้า
+        }
+
+        function submitForm() {
+            // ดึงค่าจากฟอร์ม
+            let name = document.getElementById("fullname").value;
+            let email = document.getElementById("email").value;
+            let satisfaction = document.getElementById("satisfaction").value;
+            let feedback = document.getElementById("feedback").value;
+
+            // ตรวจสอบว่ากรอกข้อมูลครบหรือไม่
+            if (name === "" || email === "") {
+                alert("กรุณากรอกชื่อและอีเมลให้ครบถ้วน");
+                return;
+            }
+
+            // แสดงผลข้อมูลที่กรอก
+            document.getElementById("resultName").textContent = name;
+            document.getElementById("resultEmail").textContent = email;
+            document.getElementById("resultSatisfaction").textContent = satisfaction;
+            document.getElementById("resultFeedback").textContent = feedback;
+
+            // แสดงกล่องข้อมูลที่กรอก
+            document.getElementById("resultBox").style.display = "block";
+
+            // ล้างค่าฟอร์ม
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+
+</body>
+</html>

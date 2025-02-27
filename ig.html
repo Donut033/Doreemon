@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ Instagram</title>
+    <link rel="stylesheet" href="ig.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- ส่วนข้อมูลโปรไฟล์ -->
+        <div class="profile-header">
+            <img src="/project/img/profile.jpg" alt="รูปโปรไฟล์" class="profile-pic">
+            <div class="profile-info">
+                <h2>chiangrai_travel</h2>
+                <button class="follow-btn" onclick="toggleFollow()">ติดตาม</button>
+                <p><strong>โพสต์</strong> 120 | <strong>ผู้ติดตาม</strong> <span id="follower-count">50K</span> | <strong>กำลังติดตาม</strong> 200</p>
+                <p>🌿 เที่ยวเชียงราย | แชร์สถานที่สวยๆ | รีวิวของกิน 🍜</p>
+            </div>
+        </div>
+
+        <!-- ส่วนแกลเลอรีรูปภาพ -->
+        <div class="gallery">
+            <img src="/project/img/img1.8.jpg" alt="ภาพ 1">
+            <img src="/project/img/img4.8.1.webp" alt="ภาพ 2">
+            <img src="/project/img/img4.5.1.webp" alt="ภาพ 3">
+            <img src="/project/img/img4.1.jpg" alt="ภาพ 4">
+            <img src="/project/img/img1.jpg" alt="ภาพ 5">
+            <img src="/project/img/img4.4.1.jpeg" alt="ภาพ 6">
+        </div>
+    </div>
+
+    <script src="ig.js"></script>
+
+</body>
+</html>
